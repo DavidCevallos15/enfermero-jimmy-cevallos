@@ -1,0 +1,206 @@
+:root {
+  --bs-primary: #1E88E5; /* Profession Nursing Blue */
+  --bs-primary-rgb: 30, 136, 229;
+  --bs-secondary: #6c757d;
+  --bs-success: #43A047; /* Medical Green */
+  --bs-success-rgb: 67, 160, 71;
+  --bs-body-bg: #F9FAFB;
+  --bs-body-font-family: 'Outfit', system-ui, sans-serif;
+  
+  /* Custom Variables */
+  --c-primary: #1E88E5;
+  --c-dark-blue: #1565C0;
+  --c-green: #43A047;
+  --c-dark-green: #388E3C;
+}
+
+/* --- Bootstrap Overrides --- */
+
+body {
+  font-family: var(--bs-body-font-family);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Override Bootstrap Primary Colors */
+.text-primary { color: var(--c-primary) !important; }
+.bg-primary { background-color: var(--c-primary) !important; }
+.border-primary { border-color: var(--c-primary) !important; }
+
+.btn-primary {
+  background-color: var(--c-primary);
+  border-color: var(--c-primary);
+}
+.btn-primary:hover {
+  background-color: var(--c-dark-blue);
+  border-color: var(--c-dark-blue);
+  box-shadow: 0 4px 12px rgba(30, 136, 229, 0.4);
+}
+
+.text-success { color: var(--c-green) !important; }
+.bg-success { background-color: var(--c-green) !important; }
+.border-success { border-color: var(--c-green) !important; }
+
+.btn-success {
+  background-color: var(--c-green);
+  border-color: var(--c-green);
+}
+.btn-success:hover {
+  background-color: var(--c-dark-green);
+  border-color: var(--c-dark-green);
+  box-shadow: 0 4px 12px rgba(67, 160, 71, 0.4);
+}
+
+.btn {
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+/* --- Animations & Effects --- */
+
+/* Smooth Scroll Animation */
+.animate-on-scroll {
+  opacity: 1; /* Safe fallback */
+  transform: translateY(0);
+  transition: opacity 1s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+              transform 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: opacity, transform;
+}
+
+body.js-loaded .animate-on-scroll:not(.is-visible) {
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+.delay-100 { transition-delay: 0.1s; }
+.delay-200 { transition-delay: 0.2s; }
+.delay-300 { transition-delay: 0.3s; }
+
+/* Float Animation */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.float-wrapper {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* --- Hover Effects "Top" --- */
+
+.hover-lift {
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 1rem 3rem rgba(0,0,0,0.1) !important; /* Bootstrap shadow-lg equiv but smoother */
+}
+
+.hover-text-warning:hover {
+  color: #ffc107 !important;
+}
+
+.cursor-pointer { cursor: pointer; }
+
+.transition { transition: all 0.3s ease; }
+
+/* --- Layout & Spacing --- */
+
+section {
+  padding: 120px 0; /* Generous breathing room */
+  position: relative;
+}
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1030; /* Bootstrap z-index for fixed/sticky */
+  background: rgba(255, 255, 255, 0.85); /* Translucent initially */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+header.scrolled {
+  background: rgba(255, 255, 255, 0.98);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+/* --- Specific Component Styles --- */
+
+/* Hero Image Specifics */
+.hero {
+  padding-top: 140px; /* Account for header + spacing */
+  padding-bottom: 120px;
+  background: radial-gradient(circle at 50% 10%, rgba(30, 136, 229, 0.08), transparent 70%);
+}
+
+.hero-img {
+  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+/* Service List Bullets */
+.service-category ul {
+  position: relative;
+  z-index: 1;
+}
+
+/* Testimonial Glassmorphism */
+.backdrop-blur {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* Survey Form */
+.survey-card {
+  border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+.rating-stars label:hover,
+.rating-stars label:hover ~ label {
+  color: #ffc107 !important;
+}
+.rating-stars input:checked ~ label {
+  color: #ffc107 !important;
+}
+
+/* Floating Elements */
+.floating-whatsapp {
+  transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+.floating-whatsapp:hover {
+  transform: scale(1.1) rotate(10deg);
+}
+
+/* Input Focus States */
+.form-control:focus {
+  border-color: var(--c-primary);
+  box-shadow: 0 0 0 0.25rem rgba(30, 136, 229, 0.15);
+}
+
+/* Responsive Tweaks */
+@media (max-width: 991.98px) {
+  section {
+    padding: 80px 0; /* Smaller padding on mobile */
+  }
+  .hero {
+    padding-top: 40px;
+    padding-bottom: 60px;
+    text-align: center;
+  }
+  .hero-text {
+    align-items: center;
+  }
+}
+
+@media (min-width: 992px) {
+  .hero {
+    min-height: 90vh; /* Full viewport height feeling on desktop */
+  }
+}
